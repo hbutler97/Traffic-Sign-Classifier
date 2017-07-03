@@ -34,6 +34,11 @@ The goals / steps of this project are the following:
 [image17]: ./examples/stop8.png "Stop Sign 8"
 [image18]: ./examples/stop9.png "Stop Sign 9"
 [image19]: ./examples/hist.png "Data Set Historgram"
+[image20]: ./examples/initial_training.png "Initial Training Results"
+[image21]: ./examples/normization_training.png "Normization Training Results"
+[image22]: ./examples/grey_norm_filter_training.png "Grey Norm and Filter Training Results"
+[image23]: ./examples/grey_norm_filter_drop_training.png "Grey Norm and Filter Dropout Training Results"
+[image24]: ./examples/grey_norm_filter_drop_training_loss.png "Grey Norm and Filter Dropout Training Results"
 
 
 ## [Rubric Points](https://review.udacity.com/#!/rubrics/481/view)
@@ -68,9 +73,44 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 ![alt text][image1]
 
-###Design and Test a Model Architecture
+Out of the box performance of LeNet was 87.2% accuracy on the validation set and 97.6% on the training set...
 
+![alt text][image20]
+
+Normalization was implemented and training accuracy improved to 98.1%, however Validation results decreased to 83.4%.
+![alt text][image20]
+
+Applying Grey scale chale filter(contrast issue) and normilzation improves the training accuracy to 99.5% and the Validation accuracy to 92.6%
+![alt text][image22]
+
+
+### Design and Test a Model Architecture
+
+Updated the fc layers with a dropout function and L2 regulization and increased Epoch the training accuracy drop to 100% but the validation increased to 97.6%
+
+Below is the graph of Accurcy and Lost functions
+
+![alt text][image23] ![alt text][image24]
+
+### Final Test Accuracy was 95% Add plot
+
+This would imply that that we are overfitting the model
+
+solutions
+3 way data set(cross validation)
+Regularization
+	l1 and l2
+Max Norm Constrains
+Drop out
+
+Need to solve the overfitting problem
+with not changes to any hyperparmeters
+
+
+
+Figuring out the correct number of features to fit the best model is important....  So rationale about preprocessing on the data becomes important such that our network can be properly fitted
 ####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+
 
 As a first step, I decided to convert the images to grayscale because ...
 
