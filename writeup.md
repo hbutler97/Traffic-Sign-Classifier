@@ -1,18 +1,3 @@
-# **Traffic Sign Recognition** 
-
-
-
-**Build a Traffic Sign Recognition Project**
-
-The goals / steps of this project are the following:
-* Load the data set (see below for links to the project data set)
-* Explore, summarize and visualize the data set
-* Design, train and test a model architecture
-* Use the model to make predictions on new images
-* Analyze the softmax probabilities of the new images
-* Summarize the results with a written report
-
-
 [//]: # (Image References)
 
 [image1]: ./examples/visualization.png "Visualization"
@@ -23,7 +8,7 @@ The goals / steps of this project are the following:
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
-[image9]: ./examples/stop0.png "Stop Sign 0"
+[image9]:  ./examples/stop0.png "Stop Sign 0"
 [image10]: ./examples/stop1.png "Stop Sign 1"
 [image11]: ./examples/stop2.png "Stop Sign 2"
 [image12]: ./examples/stop3.png "Stop Sign 3"
@@ -39,184 +24,250 @@ The goals / steps of this project are the following:
 [image22]: ./examples/grey_norm_filter_training.png "Grey Norm and Filter Training Results"
 [image23]: ./examples/grey_norm_filter_drop_training.png "Grey Norm and Filter Dropout Training Results"
 [image24]: ./examples/grey_norm_filter_drop_training_loss.png "Grey Norm and Filter Dropout Training Results"
+[image25]: ./examples/lenet5.png "LeNet CNN"
+[image26]: ./examples/train_classes.png "Traning Set Histagram"
+
+[image27]: ./examples/speed20_0.png "Speed20_ Sign 0"
+[image28]: ./examples/speed20_1.png "Speed20_ Sign 1"
+[image29]: ./examples/speed20_2.png "Speed20_ Sign 2"
+[image30]: ./examples/speed20_3.png "Speed20_ Sign 3"
+[image31]: ./examples/speed20_4.png "Speed20_ Sign 4"
+[image32]: ./examples/speed20_5.png "Speed20_ Sign 5"
+[image33]: ./examples/speed20_6.png "Speed20_ Sign 6"
+[image34]: ./examples/speed20_7.png "Speed20_ Sign 7"
+[image35]: ./examples/speed20_8.png "Speed20_ Sign 8"
+[image36]: ./examples/speed20_9.png "Speed20_ Sign 9"
+
+[image37]: ./examples/processed_stop_report.png "Processed Stop Sign"
+[image38]: ./examples/stop_report.png "Stop Sign Report"
+
+[image40]: ./examples/speed30_0.png "Speed30_ Sign 0"
+[image41]: ./examples/speed30_1.png "Speed30_ Sign 1"
+[image42]: ./examples/speed30_2.png "Speed30_ Sign 2"
+[image43]: ./examples/speed30_3.png "Speed30_ Sign 3"
+[image44]: ./examples/speed30_4.png "Speed30_ Sign 4"
+[image45]: ./examples/speed30_5.png "Speed30_ Sign 5"
+[image46]: ./examples/speed30_6.png "Speed30_ Sign 6"
+[image47]: ./examples/speed30_7.png "Speed30_ Sign 7"
+[image48]: ./examples/speed30_8.png "Speed30_ Sign 8"
+[image49]: ./examples/speed30_9.png "Speed30_ Sign 9"
+
+[image50]: ./examples/child0.png "Child_ Sign 0"
+[image51]: ./examples/child1.png "Child_ Sign 1"
+[image52]: ./examples/child2.png "Child_ Sign 2"
+[image53]: ./examples/child3.png "Child_ Sign 3"
+[image54]: ./examples/child4.png "Child_ Sign 4"
+[image55]: ./examples/child5.png "Child_ Sign 5"
+[image56]: ./examples/child6.png "Child_ Sign 6"
+[image57]: ./examples/child7.png "Child_ Sign 7"
+[image58]: ./examples/child8.png "Child_ Sign 8"
+[image59]: ./examples/child9.png "Child_ Sign 9"
+
+[image60]: ./german_signs/yield.png "Processed German Sign"
+[image61]: ./german_signs/yield_color.png "Raw German Sign"
+[image62]: ./german_signs/german_results0.png "Results"
+[image63]: ./german_signs/german_results1.png "Results"
+[image64]: ./german_signs/german_results2.png "Results"
+[image65]: ./german_signs/german_results3.png "Results"
+[image66]: ./german_signs/german_results4.png "Results"
+[image67]: ./german_signs/german_results5.png "Results"
+[image68]: ./german_signs/german_results6.png "Results"
+[image69]: ./german_signs/german_results7.png "Results"
 
 
-## [Rubric Points](https://review.udacity.com/#!/rubrics/481/view)
+# **Traffic Sign Recognition** 
 
-* Files Submitted
-* Dataset Exploration
-* Design and Test a Model Architecture
-* Test A Model on New Images
----
-### Writeup / README
+## **Overview**
 
+This project classifies German Traffic Signs using a Convolutional Neural Network(CNN).   [LeNet CNN](http://yann.lecun.com/exdb/publis/pdf/lecun-98.pdf) is used as a starting point for this project.  The architecture for the [LeNet CNN](http://yann.lecun.com/exdb/publis/pdf/lecun-98.pdf) is shown below.  Along with LeNet architecture augmentation and training, the German Traffic Sign data set is preprocessed to achieve a target classification accuracy of 93%.
 
 Link to [project code](https://github.com/hbutler97/Traffic-Sign-Classifier/blob/master/Traffic_Sign_Classifier.ipynb)
 
-### Data Set Summary & Exploration
+![alt text][image25]
 
-#### 1. Data Set Summary
+## **Data Set Exploration**
 
-* The size of training set is 34799
-* The size of the validation set is 4410
-* The size of test set is 12630
-* The shape of a traffic sign image is (32, 32, 3)
-* The number of unique classes/labels in the data set is 43
+The German Traffic Sign data set consisted of a training set, validation set and test set. 
 
-#### 2. Include an exploratory visualization of the dataset.
+#### **Data Set Summary**
 
-10 random images from each classification was visualized in order to view the integrity of the data set
+* The size of training set is: **34799**
+* The size of the validation set is: **4410**
+* The size of test set is: **12630**
+* The shape of a traffic sign image is: **(32, 32, 3)**
+* The number of unique classes/labels in the data set is: **43**
+
+#### **Data Set Distribution**
+
+Each image is also classified in one of 43 classes.  
+
+![alt text][image26]
+
+#### **Data Set Visualization**
+
+10 random images from each classification was visualized in order to view the integrity of the data set.
+As seen below, images have varying quality levels and attributes which increases the features that the CNN will have to understand to properly classify the traffic signs.
+
 
 ![alt text][image9] ![alt text][image10] ![alt text][image11] ![alt text][image12] ![alt text][image13] ![alt text][image14] ![alt text][image15] ![alt text][image16] ![alt text][image17] ![alt text][image18]
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+![alt text][image27] ![alt text][image28] ![alt text][image29] ![alt text][image30] ![alt text][image31] ![alt text][image32] ![alt text][image33] ![alt text][image34] ![alt text][image35] ![alt text][image36]
 
-![alt text][image1]
+![alt text][image40] ![alt text][image41] ![alt text][image42] ![alt text][image43] ![alt text][image44] ![alt text][image45] ![alt text][image46] ![alt text][image47] ![alt text][image48] ![alt text][image49]
 
-Out of the box performance of LeNet was 87.2% accuracy on the validation set and 97.6% on the training set...
+![alt text][image50] ![alt text][image51] ![alt text][image52] ![alt text][image53] ![alt text][image54] ![alt text][image55] ![alt text][image56] ![alt text][image57] ![alt text][image58] ![alt text][image59]
+
+
+**Initial LeNet Training results**
+
+* Number of EPOCH 10
+* Batch size: 128
+* Learn Rate: 0.001
 
 ![alt text][image20]
 
-Normalization was implemented and training accuracy improved to 98.1%, however Validation results decreased to 83.4%.
-![alt text][image20]
+* Training Accuracy: 97.6%
+* Validation Accuracy: 87.2%
 
-Applying Grey scale chale filter(contrast issue) and normilzation improves the training accuracy to 99.5% and the Validation accuracy to 92.6%
+The high training accuracy and low validation accuracy implies that the model is overfitting. The following was used to address Overfitting:
+
+* **Data Preprocessing**
+
+* **Drop Out**
+
+* **L2 Regularization** 
+
+
+#### **Data Set Preprocessing**
+
+As stated above, the data set is complex and as such contributes to the overfitting of the network.  Images were converted to greyscale, passed through a [Contrast Limited Adaptive Histogram Equalization(CLAHE)](https://en.wikipedia.org/wiki/Adaptive_histogram_equalization) Filter and normalized to simplify the image feature set.  Below is an example of an image before and after the transformation.
+
+
+![alt text][image38] ![alt text][image37]
+
+
+**LeNet Training results after image preprocessing**
+
+* Number of EPOCH 10
+* Batch size: 128
+* Learn Rate: 0.001
+
 ![alt text][image22]
 
+* Training Accuracy: 99.5%
+* Validation Accuracy: 92.6%
 
-### Design and Test a Model Architecture
-
-Updated the fc layers with a dropout function and L2 regulization and increased Epoch the training accuracy drop to 100% but the validation increased to 97.6%
-
-Below is the graph of Accurcy and Lost functions
-
-![alt text][image23] ![alt text][image24]
-
-### Final Test Accuracy was 95% Add plot
-
-This would imply that that we are overfitting the model
-
-solutions
-3 way data set(cross validation)
-Regularization
-	l1 and l2
-Max Norm Constrains
-Drop out
-
-Need to solve the overfitting problem
-with not changes to any hyperparmeters
+Preprocessing gets the Validation Accuracy very close to the test data target of 93%.
 
 
+#### **Design and Test Model Architecture**
 
-Figuring out the correct number of features to fit the best model is important....  So rationale about preprocessing on the data becomes important such that our network can be properly fitted
-####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
-
-
-As a first step, I decided to convert the images to grayscale because ...
-
-Here is an example of a traffic sign image before and after grayscaling.
-
-![alt text][image2]
-
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
-
-
-####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
-
-My final model consisted of the following layers:
-
-| Layer         		|     Description	        					| 
+The architecture of the Model used is shown below...  The augmentation to the Default LeNet architecture where adding dropout between fully connected nets and adding L2 Regularization.  Both shown below in bold.
+| Layer         	|     Description	        		| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
-| RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
- 
+| Input         	| 32x32x1 Gray Scale image   			| 
+| 1. Convolution 5x5   	| 1x1 stride, valid padding, outputs 28x28x6 	|
+| RELU			|						|
+| Max pooling	      	| 2x2 stride,  outputs 14x14x6  		|
+| 2. Convolution 5x5   	| 1x1 stride, valid padding, outputs 10x10x16 	|
+| RELU			|						|
+| Max pooling	      	| 2x2 stride,  outputs 5x5x16  		        |
+| Flatten               | output 400					|
+| 3. Fully Connected    | output 120					|
+| RELU			|						|
+| **Dropout**		| keep prob 0.5					|
+| 4. Fully Connected    | output 84					|
+| RELU			|						|
+| **Dropout**		| keep prob 0.5					|
+| 5. Fully Connected	| output 43 					|
+| Softmax		|         					|
+| **L2 Regularizer**	| beta 0.01					|
 
 
-####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an ....
+**Augmented LeNet Training results**
 
-####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+* Number of EPOCH 100
+* Batch size: 128
+* Learn Rate: 0.0007
+* Regularization Loss Constant: 0.01
 
-My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+![alt text][image23] 
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+* Training Accuracy: 100.0%
+* Validation Accuracy: 97.6%
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+With the changes to the model, training and validation accuracy has improved as shown in the figure above
 
-###Test a Model on New Images
+Figure below is a graph of the loss function which also includes the L2 loss(Artificial constrain)
 
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
-
-Here are five German traffic signs that I found on the web:
-
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
-
-The first image might be difficult to classify because ...
-
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
-
-Here are the results of the prediction:
-
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+![alt text][image24]
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+**Augmented LeNet Test results**
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
-
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
-
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+* <span style="color:red"> Test Accuracy: 95% </span>
 
 
-For the second image ... 
 
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
+#### **Test Model on New Images**
+
+8 Random images from the web were downloaded and applied to the model..  Prior to running the images through the model, the dimensions of the image were reduced to fit the network which causes some loss. 
+
+
+Raw Images
+
+![alt text][image61]
+
+Processed Images
+
+![alt text][image60]
+
+The sized reduced image was then preprocess and applied to the model.
+
+
+
+Image 1 Yield Accuracy = 1.000
+
+Image 2 50KM/Hr Accuracy = 1.000
+
+Image 3 Road Work Accuracy = 1.000
+
+Image 4 Don't Enter Accuracy = 1.000
+
+Image 5 30KM/Hr Accuracy = 1.000
+
+Image 6 60KH/Hr Accuracy = 0.833
+
+Possible issues are the serif on the "6"
+
+Image 7 Don't Pass Accuracy = 0.714
+
+Possible issues are the water marks and pole
+
+Image 8 Don't Pass 2 Accuracy = 0.625
+
+Possible issues are the water marks angle of the shot and pole
+
+
+Yield
+![alt text][image62]
+50 KM/hr
+![alt text][image63]
+Road Work
+![alt text][image64]
+Don't Enter
+![alt text][image65]
+30 KM/hr
+![alt text][image66]
+60 KM/hr
+![alt text][image67]
+Don't Pass
+![alt text][image68]
+Don't Pass 2
+![alt text][image69]
+
+The model properly predicts the first 5 signs with a very high degree of certainty of it's selection.  On the later three the image it guesses with the highest probability is difficult to classify visually by human eyes. which is interesting. This may be an issue with the similarities of the images in the sets for these classes. 
+
 
 
