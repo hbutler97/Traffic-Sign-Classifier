@@ -73,6 +73,7 @@
 [image67]: ./german_signs/german_results5.png "Results"
 [image68]: ./german_signs/german_results6.png "Results"
 [image69]: ./german_signs/german_results7.png "Results"
+[image70]: ./examples/network_changes.png "Network"
 
 
 # **Traffic Sign Recognition** 
@@ -163,27 +164,8 @@ Preprocessing gets the Validation Accuracy very close to the test data target of
 #### **Design and Test Model Architecture**
 
 The architecture of the Model used is shown below...  The augmentation to the Default LeNet architecture where adding dropout between fully connected nets and adding L2 Regularization.  Both shown below in bold.
-| Layer         	|     Description	        		| 
-|:---------------------:|:---------------------------------------------:| 
-| Input         	| 32x32x1 Gray Scale image   			| 
-| 1. Convolution 5x5   	| 1x1 stride, valid padding, outputs 28x28x6 	|
-| RELU			|						|
-| Max pooling	      	| 2x2 stride,  outputs 14x14x6  		|
-| 2. Convolution 5x5   	| 1x1 stride, valid padding, outputs 10x10x16 	|
-| RELU			|						|
-| Max pooling	      	| 2x2 stride,  outputs 5x5x16  		        |
-| Flatten               | output 400					|
-| 3. Fully Connected    | output 120					|
-| RELU			|						|
-| **Dropout**		| keep prob 0.5					|
-| 4. Fully Connected    | output 84					|
-| RELU			|						|
-| **Dropout**		| keep prob 0.5					|
-| 5. Fully Connected	| output 43 					|
-| Softmax		|         					|
-| **L2 Regularizer**	| beta 0.01					|
 
-
+![alt text][image70]
 
 **Augmented LeNet Training results**
 
